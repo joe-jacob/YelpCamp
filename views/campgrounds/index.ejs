@@ -1,0 +1,23 @@
+<%- layout('layouts/boilerplate') %>
+<h1>All Campgrounds</h1>
+<div style="margin-bottom: 1rem;">
+    <a href="/campgrounds/new" class="btn btn-primary">Add New Campground</a>
+</div>
+<div class="row">
+<% for(let campground of campgrounds) {%>
+    <div class="col-md-4 mb-4">
+    <div class="card">
+        <img class="card-img-top" src="<%= campground.image %>" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title"><%= campground.title %></h5>
+                <small class="text-muted"><%= campground.location %></small>
+                <p class="card-text"><%= campground.description %></p>
+                <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">View <%= campground.title %></a>
+            </div>
+    </div>
+    </div>
+<% }%>
+</div>
+
+<!-- When using layout(), Express.js resolves the relative path within the views directory.
+When using include(), EJS resolves the relative path relative to the current file being rendered. -->
